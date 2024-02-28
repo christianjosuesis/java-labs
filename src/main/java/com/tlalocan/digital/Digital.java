@@ -16,8 +16,10 @@ import java.io.IOException;
  */
 public class Digital {
 
+    private static String rutaArchivo = "c://archivo.xlsx"; // ruta al archivo
+    
     public static void main(String[] args) {
-        String rutaArchivo = "c://archivo.xlsx"; // ruta al archivo
+        
         try {
             FileInputStream file = new FileInputStream(new File(rutaArchivo));
             Workbook workbook = new XSSFWorkbook(file);
@@ -45,6 +47,15 @@ public class Digital {
             workbook.close();
             file.close();
 
+           printDoubleArray(numFilas, numColumnas, datos);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+      
+       private static void printDoubleArray(int numFilas, int numColumnas, String[][] datos)
+       {
             // Imprimir el arreglo bidimensional
             for (int i = 0; i < numFilas; i++) {
                 for (int j = 0; j < numColumnas; j++) {
@@ -52,11 +63,7 @@ public class Digital {
                 }
                 System.out.println();
             }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+       }
     
        private static String obtenerContenidoCelda(Cell cell) {
         switch (cell.getCellType()) {
