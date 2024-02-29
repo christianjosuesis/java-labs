@@ -12,7 +12,7 @@ import java.io.IOException;
 
 /**
  *
- * @author Ivan
+ * @author chris
  */
 public class Digital {
 
